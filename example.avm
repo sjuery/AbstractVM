@@ -1,0 +1,23 @@
+; -------------
+; exemple.avm -
+; -------------
+
+push int8(42)
+push int32(33) ; Pushed 32 bit integer 33 to stack
+
+add ; Pops top 2 values and adds them together. Pushes the result
+
+push float(44.55) ; Pushed float 44.55 to stack
+
+mul ; Pops top 2 values and multiplies them together. Pushes the result
+
+push double(42.42) ; Pushed double 42.42 to stack
+push int32(42) ; Pushed 32 bit integer 42 to stack
+
+dump ; Prints entire stack without changing its content
+
+pop ; Unstacks the top value (Throws exception if empty)
+
+assert double(42.42) ; Checks that top of stack is equal to given value (Throws exception if empty)
+
+exit ; Quits the program (If exit is not there at end of file throw and exception)
