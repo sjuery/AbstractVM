@@ -6,7 +6,7 @@
 #include "IOperand.hpp"
 
 class VirtualMachine {
-	std::vector<int> _vect;
+	std::vector<IOperand*> _vect;
 public:
 	VirtualMachine();
 	~VirtualMachine();
@@ -29,5 +29,5 @@ public:
 	// 	}
 	// };
 
-	std::vector<int> getVect() const;
+	std::vector<IOperand*> getVect() const;
 };

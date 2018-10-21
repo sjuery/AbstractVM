@@ -1,4 +1,5 @@
 #include "IOperand.hpp"
+#include "template.hpp"
 
 IOperand::IOperand()
 {
@@ -10,7 +11,7 @@ IOperand::~IOperand()
 
 }
 
-IOperand const * IOperand::createOperand( eOperandType type, std::string const & value ) const
+IOperand * IOperand::createOperand( eOperandType type, std::string const & value )
 {
 	switch(type)
 	{
@@ -27,32 +28,79 @@ IOperand const * IOperand::createOperand( eOperandType type, std::string const &
 	}
 }
 
-IOperand const * IOperand::createInt8( std::string const & value ) const
+IOperand * IOperand::createInt8( std::string const & value )
 {
-	std::cout << "Created Int8 with value " << value << std::endl;
+	try
+	{
+		if(stoi(value) >= -128 && stoi(value) <= 127)
+			return new Template<int8_t>(stoi(value));
+		throw InvalidNumber();
+
+	}
+	catch(std::exception& e)
+	{
+		std::cout << value << e.what() << std::endl;
+	}
 	return NULL;
 }
 
-IOperand const * IOperand::createInt16( std::string const & value ) const
+IOperand * IOperand::createInt16( std::string const & value )
 {
-	std::cout << "Created Int16 with value " << value << std::endl;
+	try
+	{
+		if(stoi(value) >= -32768 && stoi(value) <= 32768)
+			return new Template<int16_t>(stoi(value));
+		throw InvalidNumber();
+
+	}
+	catch(std::exception& e)
+	{
+		std::cout << value << e.what() << std::endl;
+	}
 	return NULL;
 }
 
-IOperand const * IOperand::createInt32( std::string const & value ) const
+IOperand * IOperand::createInt32( std::string const & value )
 {
-	std::cout << "Created Int32 with value " << value << std::endl;
+	try
+	{
+		if(stoi(value) >= -2147483648 && stoi(value) <= 2147483647)
+			return new Template<int32_t>(stoi(value));
+		throw InvalidNumber();
+	}
+	catch(std::exception& e)
+	{
+		std::cout << value << e.what() << std::endl;
+	}
 	return NULL;
 }
 
-IOperand const * IOperand::createFloat( std::string const & value ) const
+IOperand * IOperand::createFloat( std::string const & value )
 {
-	std::cout << "Created Float with value " << value << std::endl;
+	try
+	{
+		if(stof(value) >= std::numeric_limits<float>::min() && stof(value) <= std::numeric_limits<float>::max())
+			return new Template<float>(stof(value));
+		throw InvalidNumber();
+	}
+	catch(std::exception& e)
+	{
+		std::cout << value << e.what() << std::endl;
+	}
 	return NULL;
 }
 
-IOperand const * IOperand::createDouble( std::string const & value ) const
+IOperand * IOperand::createDouble( std::string const & value )
 {
-	std::cout << "Created Double with value " << value << std::endl;
+	try
+	{
+		if(stod(value) >= std::numeric_limits<double>::min() && stod(value) <= std::numeric_limits<double>::max())
+			return new Template<double>(stod(value));
+		throw InvalidNumber();
+	}
+	catch(std::exception& e)
+	{
+		std::cout << value << e.what() << std::endl;
+	}
 	return NULL;
 }
