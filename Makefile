@@ -6,7 +6,7 @@
 #    By: sjuery <sjuery@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/04 14:33:42 by sjuery            #+#    #+#              #
-#    Updated: 2018/10/20 18:20:16 by sjuery           ###   ########.fr        #
+#    Updated: 2018/10/22 14:42:43 by sjuery           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,17 @@ NAME	= abstractVM
 SRC		= 	srcs/abstractVM.cpp \
 			srcs/IOperand.cpp \
 			srcs/VirtualMachine.cpp \
+			srcs/ParseInput.cpp \
 
 OBJ 	= $(SRC:.c=.o)
-CFLAG	= -Wall -Wextra -Werror -fsanitize=address -fsanitize=undefined
-			-O3 -march=native -flto=thin
+CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined \
+			-O3 -march=native -flto=thin -std=c++14
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@printf '\033[31m[...] %s\n\033[0m\033[33m' "Creating AbstractVM"
-	clang++ $(CFLAG) $^ -o $(NAME)
+	g++ $(CFLAGS) $^ -o $(NAME)
 	@printf '\033[32m[ ✔ ] %s\n\033[0m' "Created AbstractVM"
 
 clean:

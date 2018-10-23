@@ -1,5 +1,5 @@
 #include "IOperand.hpp"
-#include "template.hpp"
+#include "Polymorphed.hpp"
 
 IOperand::IOperand()
 {
@@ -33,7 +33,7 @@ IOperand * IOperand::createInt8( std::string const & value )
 	try
 	{
 		if(stoi(value) >= -128 && stoi(value) <= 127)
-			return new Template<int8_t>(stoi(value));
+			return new Polymorphed<int8_t>(stoi(value));
 		throw InvalidNumber();
 
 	}
@@ -49,7 +49,7 @@ IOperand * IOperand::createInt16( std::string const & value )
 	try
 	{
 		if(stoi(value) >= -32768 && stoi(value) <= 32768)
-			return new Template<int16_t>(stoi(value));
+			return new Polymorphed<int16_t>(stoi(value));
 		throw InvalidNumber();
 
 	}
@@ -65,7 +65,7 @@ IOperand * IOperand::createInt32( std::string const & value )
 	try
 	{
 		if(stoi(value) >= -2147483648 && stoi(value) <= 2147483647)
-			return new Template<int32_t>(stoi(value));
+			return new Polymorphed<int32_t>(stoi(value));
 		throw InvalidNumber();
 	}
 	catch(std::exception& e)
@@ -80,7 +80,7 @@ IOperand * IOperand::createFloat( std::string const & value )
 	try
 	{
 		if(stof(value) >= std::numeric_limits<float>::min() && stof(value) <= std::numeric_limits<float>::max())
-			return new Template<float>(stof(value));
+			return new Polymorphed<float>(stof(value));
 		throw InvalidNumber();
 	}
 	catch(std::exception& e)
@@ -95,7 +95,7 @@ IOperand * IOperand::createDouble( std::string const & value )
 	try
 	{
 		if(stod(value) >= std::numeric_limits<double>::min() && stod(value) <= std::numeric_limits<double>::max())
-			return new Template<double>(stod(value));
+			return new Polymorphed<double>(stod(value));
 		throw InvalidNumber();
 	}
 	catch(std::exception& e)
