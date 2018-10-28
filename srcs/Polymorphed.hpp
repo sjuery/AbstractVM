@@ -52,7 +52,7 @@ IOperand const * Polymorphed<T>::operator+( IOperand const & rhs ) const {
 template <class T>
 IOperand const * Polymorphed<T>::operator-( IOperand const & rhs ) const {
 	eOperandType precision = getPrecision() < rhs.getPrecision() ? rhs.getType() : getType();
-	return IOperand::createOperand(precision, std::to_string(_number * stod(rhs.toString())));
+	return IOperand::createOperand(precision, std::to_string(_number - stod(rhs.toString())));
 }
 
 template <class T>
@@ -64,13 +64,15 @@ IOperand const * Polymorphed<T>::operator*( IOperand const & rhs ) const {
 template <class T>
 IOperand const * Polymorphed<T>::operator/( IOperand const & rhs ) const {
 	eOperandType precision = getPrecision() < rhs.getPrecision() ? rhs.getType() : getType();
-	return IOperand::createOperand(precision, std::to_string(fmod(_number, stod(rhs.toString()))));
+	if(stod(rhs.toString()) != 0)
+		return IOperand::createOperand(precision, std::to_string(_number / stod(rhs.toString())));
+	throw DividingByZero();
 }
 
 template <class T>
 IOperand const * Polymorphed<T>::operator%( IOperand const & rhs ) const {
-	(void)rhs;
-	return this;
+	eOperandType precision = getPrecision() < rhs.getPrecision() ? rhs.getType() : getType();
+	return IOperand::createOperand(precision, std::to_string(fmod(_number, stod(rhs.toString()))));
 }
 
 template <class T>

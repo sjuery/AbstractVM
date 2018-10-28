@@ -6,7 +6,7 @@
 #    By: sjuery <sjuery@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/04 14:33:42 by sjuery            #+#    #+#              #
-#    Updated: 2018/10/22 14:42:43 by sjuery           ###   ########.fr        #
+#    Updated: 2018/10/27 17:04:52 by sjuery           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= abstractVM
 SRC		= 	srcs/abstractVM.cpp \
 			srcs/IOperand.cpp \
 			srcs/VirtualMachine.cpp \
-			srcs/ParseInput.cpp \
+			srcs/LexInput.cpp \
 
 OBJ 	= $(SRC:.c=.o)
 CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined \
