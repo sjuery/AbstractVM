@@ -6,7 +6,7 @@
 #    By: sjuery <sjuery@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/04 14:33:42 by sjuery            #+#    #+#              #
-#    Updated: 2018/10/27 17:04:52 by sjuery           ###   ########.fr        #
+#    Updated: 2018/10/28 14:58:49 by sjuery           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ SRC		= 	srcs/abstractVM.cpp \
 			srcs/LexInput.cpp \
 
 OBJ 	= $(SRC:.c=.o)
-CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined \
-			-O3 -march=native -flto=thin -std=c++14
+CFLAGS	= -Wall -Wextra -Werror -O3 -march=native -flto=thin -std=c++14
 
 all: $(NAME)
 

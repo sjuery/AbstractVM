@@ -6,7 +6,7 @@
 
 // enum function { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
-void parseInput(std::vector<std::string> vect)
+void parseLexedInput(std::vector<std::string> vect)
 {
 	VirtualMachine *vm = new VirtualMachine();
 
@@ -79,8 +79,8 @@ int main(int argc, char const *argv[]) {
 	else
 		std::cout << "\033[1;33mUsage: ./avm\nUsage: ./avm [File]\033[0m" << std::endl;
 	if(valid_exit)
-		parseInput(li.getCleanInput());
+		parseLexedInput(li.getCleanInput());
 	else
-		std::cout << "\033[1;33mParsing Error: Did you forget to call the exit command?\033[0m" << std::endl;
+		std::cout << "\033[1;33mLexical Error: Did you forget to call the exit command?\033[0m" << std::endl;
 	return 0;
 }

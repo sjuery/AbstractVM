@@ -85,7 +85,7 @@ int LexInput::cleanInput(std::string line, int linecnt)
 	}
 	catch(std::exception& e)
 	{
-		std::cout << "\033[1;33m[Line: " << linecnt << "] Parsing Error: " << e.what() << "\033[1;32m" << std::endl;
+		std::cout << "\033[1;33m[Line: " << linecnt << "] Lexical Error: " << e.what() << "\033[1;32m" << std::endl;
 	}
 	return 0;
 }
